@@ -37,3 +37,15 @@ export function higher<T>(arr: T[]): T {
   const subMax = higher(newArr)
   return arr[0] > subMax ? arr[0] : subMax
 }
+
+export function squares(arr: number[]): number[] {
+  // Calculate the greater square in a passed area
+  const lower = Math.min(...arr)
+  const greater = Math.max(...arr)
+  const twiceLower = 2 * lower
+  if (twiceLower === greater) {
+    return [lower, lower]
+  }
+  const subGreater = Math.max(twiceLower, greater) - Math.min(twiceLower, greater)
+  return squares([subGreater, lower])
+}

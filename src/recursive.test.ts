@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.145.0/testing/asserts.ts"
-import { factorial, countdown, sum, length, higher } from './recursive.ts'
+import { factorial, countdown, sum, length, higher, squares } from './recursive.ts'
 
 Deno.test({
   name: "Recursive",
@@ -41,6 +41,11 @@ Deno.test({
       assertEquals(higher(arr2), 55)
       assertEquals(higher(arr3), 99)
       assertEquals(higher(arr4), 'z')
+    })
+
+    await t.step('Squares', () => {
+      const arr: number[] = [1680, 640]
+      assertEquals(squares(arr), [80, 80])
     })
   }
 })
