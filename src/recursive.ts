@@ -49,3 +49,13 @@ export function squares(arr: number[]): number[] {
   const subGreater = Math.max(twiceLower, greater) - Math.min(twiceLower, greater)
   return squares([subGreater, lower])
 }
+
+export function quickSort(arr: number[]): number[] {
+  if (arr.length < 2) {
+    return arr;
+  }
+  const pivot = arr[0]
+  const minors = arr.slice(1).filter((item) => item < pivot)
+  const majors = arr.slice(1).filter((item) => item > pivot)
+  return [...quickSort(minors), pivot, ...quickSort(majors)]
+}
